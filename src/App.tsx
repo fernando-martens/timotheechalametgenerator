@@ -7,10 +7,21 @@ function pickRandom(arr: string[]): string {
 }
 
 const App: Component = () => {
-  const [name, setName] = createSignal(pickRandom(namesData.names));
+  const [remaining, setRemaining] = createSignal([...namesData.names]);
+  const [name, setName] = createSignal(namesData.names[0]);
 
   function handleGenerate() {
-    setName(pickRandom(namesData.names));
+    let pool = remaining();
+
+    if (pool.length === 0) {
+      pool = [...namesData.names];
+    }
+
+    const index = Math.floor(Math.random() * pool.length);
+    const picked = pool[index];
+
+    setName(picked);
+    setRemaining(pool.filter((_, i) => i !== index));
   }
 
   return (
