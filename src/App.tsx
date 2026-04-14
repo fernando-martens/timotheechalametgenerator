@@ -2,26 +2,32 @@ import { createSignal, type Component } from 'solid-js';
 import namesData from "./names.json";
 import avatarImg from "./assets/avatar.jpeg";
 
-function pickRandom(arr: string[]): string {
-  return arr[Math.floor(Math.random() * arr.length)];
+
+function shuffle(arr: string[]): [string, string[]] {
+  const index = Math.floor(Math.random() * arr.length);
+  return [arr[index], arr.filter((_, i) => i !== index)];
 }
 
 const App: Component = () => {
-  const [remaining, setRemaining] = createSignal([...namesData.names]);
-  const [name, setName] = createSignal(namesData.names[0]);
+
+  const [first, initialRemaining] = shuffle([...namesData.names]);
+
+  const [remaining, setRemaining] = createSignal(initialRemaining);
+  const [name, setName] = createSignal(first);
 
   function handleGenerate() {
     let pool = remaining();
 
     if (pool.length === 0) {
-      pool = [...namesData.names];
+      const [picked, rest] = shuffle([...namesData.names]);
+      setName(picked);
+      setRemaining(rest);
+      return;
     }
 
-    const index = Math.floor(Math.random() * pool.length);
-    const picked = pool[index];
-
+    const [picked, rest] = shuffle(pool);
     setName(picked);
-    setRemaining(pool.filter((_, i) => i !== index));
+    setRemaining(rest);
   }
 
   return (
