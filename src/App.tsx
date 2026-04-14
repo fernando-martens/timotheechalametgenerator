@@ -1,6 +1,6 @@
 import { createSignal, type Component } from 'solid-js';
 import namesData from "./names.json";
-import avatarImg from "./assets/avatar.jpg";
+import avatarImg from "./assets/avatar.jpeg";
 
 function pickRandom(arr: string[]): string {
   return arr[Math.floor(Math.random() * arr.length)];
