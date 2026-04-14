@@ -18,7 +18,7 @@ const App: Component = () => {
   }
 
   return (
-    <main class="relative min-h-screen bg-white flex flex-col items-center justify-center px-4 py-16">
+    <main class="relative min-h-[100dvh] bg-white flex flex-col items-center justify-center px-4 py-16">
       <div class="w-40 h-40 rounded-full overflow-hidden mb-10 shadow-sm">
         <img src={avatarImg} alt="Timothée Chalamet image" class="w-full h-full object-cover" />
       </div>
@@ -37,14 +37,15 @@ const App: Component = () => {
 
       <button
         onClick={handleGenerate}
-        class="px-8 py-3 border border-gray-300 rounded text-gray-700 text-base font-medium bg-white hover:bg-gray-50 active:scale-95 transition-all duration-150 cursor-pointer"
+        class="cursor-pointer px-8 py-2.5 border border-gray-300 rounded text-base font-medium bg-white hover:bg-gray-50 active:scale-95 transition-all duration-150"
+        style="touch-action: manipulation;"
       >
         Generate name
       </button>
 
       <div class="absolute bottom-4 flex flex-col items-center gap-1">
         <p class="text-sm text-gray-400">
-          Made by Fer and Nina with love ♥
+          Made by Fer and Nina with ♥
         </p>
         <a
           href="https://github.com/fernando-martens/timotheechalametgenerator"
