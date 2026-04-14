@@ -6,15 +6,11 @@ function pickRandom(arr: string[]): string {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
-function generateName(): string {
-  return `${pickRandom(namesData.firstNames)} ${pickRandom(namesData.lastNames)}`;
-}
-
 const App: Component = () => {
-  const [name, setName] = createSignal(generateName());
+  const [name, setName] = createSignal(pickRandom(namesData.names));
 
   function handleGenerate() {
-    setName(generateName());
+    setName(pickRandom(namesData.names));
   }
 
   return (
