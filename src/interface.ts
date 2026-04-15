@@ -1,0 +1,1 @@
+export type Step = "idle" | "validating" | "form" | "success" | "error";
