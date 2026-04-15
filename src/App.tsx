@@ -66,7 +66,6 @@ const App: Component = () => {
 
       console.log({ res });
       if (res.ok) {
-        setStep("idle");
         setSuggestion("");
         showToast("Thank you for your suggestion! ♥", "success");
       } else {
@@ -160,7 +159,7 @@ const App: Component = () => {
               class="w-full px-2 py-2 rounded-lg text-base font-medium bg-red-100 text-red-700 hover:bg-red-200 disabled:opacity-40 transition-all duration-150"
               style="touch-action: manipulation; cursor: pointer;"
             >
-              Cancel
+              Go back
             </button>
             <button
               onClick={handleSubmit}
