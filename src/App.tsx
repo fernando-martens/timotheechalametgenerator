@@ -64,8 +64,8 @@ const App: Component = () => {
         }),
       });
 
-      console.log({ res });
       if (res.ok) {
+        setStep("idle");
         setSuggestion("");
         showToast("Thank you for your suggestion! ♥", "success");
       } else {
