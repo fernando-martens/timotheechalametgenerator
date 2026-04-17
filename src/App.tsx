@@ -3,6 +3,7 @@ import namesData from "./names.json";
 import avatarImg from "./assets/avatar.jpeg";
 import { Step } from './interface';
 import FingerprintJS from "@fingerprintjs/fingerprintjs";
+import { registerGoogleAnalyticsEvent } from './ga';
 
 function shuffle(arr: string[]): [string, string[]] {
   const index = Math.floor(Math.random() * arr.length);
@@ -83,6 +84,7 @@ const App: Component = () => {
   }
 
   function handleGenerate() {
+    registerGoogleAnalyticsEvent("generateName");
     let pool = remaining();
     if (pool.length === 0) {
       const [picked, rest] = shuffle([...namesData.names]);
